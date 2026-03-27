@@ -1,17 +1,37 @@
+// src/components/Cell.jsx
 import React from "react";
 
-const Cell = ({ cell, onClick }) => {
+const Cell = ({ cell, onMouseDown, onMouseEnter, onMouseUp }) => {
   let bg = "bg-white";
-  if (cell.type === "wall") bg = "bg-black";
-  if (cell.type === "start") bg = "bg-green-500";
-  if (cell.type === "end") bg = "bg-red-500";
-  if (cell.type === "visited") bg = "bg-blue-300";
-  if (cell.type === "path") bg = "bg-yellow-400";
+  let cursor = "cursor-pointer";
+
+  switch (cell.type) {
+    case "wall":
+      bg = "bg-gray-900";
+      break;
+    case "start":
+      bg = "bg-green-500";
+      break;
+    case "end":
+      bg = "bg-red-500";
+      break;
+    case "visited":
+      bg = "bg-blue-400";
+      break;
+    case "path":
+      bg = "bg-yellow-400";
+      break;
+    default:
+      bg = "bg-white";
+  }
 
   return (
     <div
-      onClick={onClick}
-      className={`w-7 h-7 border border-gray-300 ${bg} hover:opacity-80 cell`}
+      onMouseDown={onMouseDown}
+      onMouseEnter={onMouseEnter}
+      onMouseUp={onMouseUp}
+      className={`w-7 h-7 border border-gray-700 ${bg} ${cursor} 
+                 transition-colors duration-200 hover:opacity-80 rounded-sm`}
     ></div>
   );
 };

@@ -86,7 +86,7 @@ const Grid = ({ rows = 20, cols = 20 }) => {
   const runDijkstra = () => runAlgo(dijkstra);
 
   // =======================
-  // 🎨 Render
+  //  Render
   // =======================
   return (
     <div className="p-4 flex flex-col items-center">
@@ -108,7 +108,8 @@ const Grid = ({ rows = 20, cols = 20 }) => {
 
         <div
           className="grid gap-1 p-3 rounded-2xl bg-slate-800 shadow-2xl"
-          style={{ gridTemplateColumns: `repeat(${cols}, 30px)` }}
+          style={{
+            gridTemplateColumns: `repeat(${cols}, 27px)` }}
           onMouseLeave={() => setIsMouseDown(false)}
         >
           {grid.flat().map(cell => (
