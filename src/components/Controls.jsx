@@ -12,81 +12,89 @@ const Controls = ({
   setSpeed,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-4 p-2 bg-gray-100 rounded-lg shadow-md">
-      
-      {/* Mode Buttons */}
-      <div className="flex gap-2">
-        <button
-          className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
-          onClick={() => setMode("start")}
-        >
-          Start
-        </button>
-        <button
-          className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
-          onClick={() => setMode("end")}
-        >
-          End
-        </button>
-        <button
-          className="px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-800 transition"
-          onClick={() => setMode("wall")}
-        >
-          Wall
-        </button>
+    <div className="w-full flex flex-col gap-4 p-4 bg-slate-800 rounded-2xl shadow-xl border border-slate-700">
+
+      {/* 🧠 Mode Selection */}
+      <div className="flex flex-col items-center">
+        <p className="text-sm text-gray-400 mb-2">Select Tool</p>
+        <div className="flex gap-3">
+          <button
+            className="px-4 py-2 rounded-xl bg-green-500 hover:bg-green-600 transition shadow-md"
+            onClick={() => setMode("start")}
+          >
+            Start
+          </button>
+
+          <button
+            className="px-4 py-2 rounded-xl bg-red-500 hover:bg-red-600 transition shadow-md"
+            onClick={() => setMode("end")}
+          >
+            End
+          </button>
+        </div>
       </div>
 
-      {/* Algorithm Buttons */}
-      <div className="flex gap-2">
-        <button
-          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-          onClick={runBFS}
-        >
-          BFS
-        </button>
-        <button
-          className="px-3 py-1 bg-purple-500 text-white rounded hover:bg-purple-600 transition"
-          onClick={runDFS}
-        >
-          DFS
-        </button>
-        <button
-          className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
-          onClick={runAStar}
-        >
-          A*
-        </button>
-        <button
-          className="px-3 py-1 bg-pink-500 text-white rounded hover:bg-pink-600 transition"
-          onClick={runDijkstra}
-        >
-          Dijkstra
-        </button>
+      {/* 🚀 Algorithms */}
+      <div className="flex flex-col items-center">
+        <p className="text-sm text-gray-400 mb-2">Algorithms</p>
+        <div className="flex flex-wrap justify-center gap-3">
+
+          <button
+            className="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 transition shadow-md"
+            onClick={runBFS}
+          >
+            BFS
+          </button>
+
+          <button
+            className="px-4 py-2 rounded-xl bg-purple-500 hover:bg-purple-600 transition shadow-md"
+            onClick={runDFS}
+          >
+            DFS
+          </button>
+
+          <button
+            className="px-4 py-2 rounded-xl bg-yellow-500 hover:bg-yellow-600 transition shadow-md text-black"
+            onClick={runAStar}
+          >
+            A*
+          </button>
+
+          <button
+            className="px-4 py-2 rounded-xl bg-pink-500 hover:bg-pink-600 transition shadow-md"
+            onClick={runDijkstra}
+          >
+            Dijkstra
+          </button>
+
+        </div>
       </div>
 
-      {/* Reset Button */}
-      <div>
+      {/* ⚡ Speed Control */}
+      <div className="flex flex-col items-center">
+        <p className="text-sm text-gray-400 mb-2">Animation Speed</p>
+        <div className="flex items-center gap-3">
+          <input
+            id="speed"
+            type="range"
+            min="10"
+            max="200"
+            value={speed}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            className="w-40 accent-indigo-500"
+          />
+          <span className="text-sm text-gray-300">{speed}</span>
+        </div>
+      </div>
+
+      {/* 🔄 Reset */}
+      <div className="flex justify-center">
         <button
-          className="px-3 py-1 bg-red-400 text-white rounded hover:bg-red-500 transition"
+          className="px-5 py-2 rounded-xl bg-red-500 hover:bg-red-600 transition shadow-md"
           onClick={resetGrid}
         >
-          Reset
+          Reset Grid
         </button>
-      </div>
-
-      {/* Speed Slider */}
-      <div className="flex items-center gap-2">
-        <label htmlFor="speed" className="text-gray-700">Speed:</label>
-        <input
-          id="speed"
-          type="range"
-          min="5"
-          max="100"
-          value={speed}
-          onChange={(e) => setSpeed(Number(e.target.value))}
-          className="w-32"
-        />
-        <span>{speed} ms</span>
       </div>
 
     </div>

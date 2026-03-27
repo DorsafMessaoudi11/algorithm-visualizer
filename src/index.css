@@ -5,7 +5,7 @@
 /* optional: smooth transition for cells */
 /* index.css */
 .cell {
-  transition: background-color 0.2s, transform 0.2s;
+transition: all 0.3s ease;
 }
 .cell:hover { transform: scale(1.05); }
 body {
